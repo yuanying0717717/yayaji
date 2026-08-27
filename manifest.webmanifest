@@ -1,0 +1,16 @@
+{
+  "name": "芽芽记 · 宝宝健康记录",
+  "short_name": "芽芽记",
+  "description": "极简新生儿健康记录：喂奶、排便、睡眠、体征、用药、儿保，本地优先存储，无广告无社交",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8F4ED",
+  "theme_color": "#F8F4ED",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
