@@ -121,6 +121,8 @@ const Export = {
       }));
 
     this.download('芽芽记_' + baby.name + '_全部记录.csv', out);
+    Store.db.settings.lastBackupAt = Date.now();
+    Store.save();
     toast('已导出 CSV，可用 Excel 打开');
   },
 
@@ -128,6 +130,8 @@ const Export = {
     this.download('芽芽记_备份_' + U.isoDate(Date.now()) + '.json',
       JSON.stringify({ app: 'yayaji', version: 1, exportedAt: Date.now(), db: Store.db }, null, 2),
       'application/json;charset=utf-8');
+    Store.db.settings.lastBackupAt = Date.now();
+    Store.save();
     toast('备份文件已导出（含全部数据）');
   },
 

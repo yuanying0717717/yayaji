@@ -4,7 +4,7 @@ const Store = {
   db: null,
 
   defaults() {
-    return { babies: [], currentBabyId: null, records: [], reminders: [], templates: [], tags: [], settings: { creator: '妈妈' } };
+    return { babies: [], currentBabyId: null, records: [], reminders: [], templates: [], tags: [], settings: { creator: '妈妈', lastBackupAt: 0, lastBackupDismiss: 0 } };
   },
   load() {
     try {

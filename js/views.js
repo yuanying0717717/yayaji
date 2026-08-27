@@ -25,6 +25,7 @@ function viewHome() {
 
   document.getElementById('main').innerHTML = `
     ${ongoing ? timerBanner(ongoing) : ''}
+    ${backupTip()}
     <div class="minis">
       <div class="mini"><div class="v">${st.feedCount}</div><div class="k">喂奶(次)</div></div>
       <div class="mini"><div class="v">${st.milkMl}ml</div><div class="k">奶量</div></div>
@@ -49,6 +50,22 @@ function viewHome() {
     ${homeRecs.length ? `<div class="tl">${homeRecs.map(tlItem).join('')}</div>`
       : '<div class="empty">今天还没有记录<br>点上方卡片，3 秒记一笔</div>'}
   `;
+}
+
+/* 每周备份提醒：距上次导出超过 7 天且未手动关闭过，首页显示提示条 */
+function backupTip() {
+  const s = Store.db.settings || {};
+  const now = Date.now();
+  const WEEK = 7 * 86400000;
+  const lastAt = s.lastBackupAt || 0;
+  const lastDim = s.lastBackupDismiss || 0;
+  if (lastAt && now - lastAt < WEEK) return '';
+  if (lastDim && now - lastDim < WEEK) return '';
+  const days = lastAt ? Math.max(1, Math.floor((now - lastAt) / 86400000)) : 0;
+  const msg = lastAt ? '距上次备份已 ' + days + ' 天，建议每周导出一次' : '数据仅存本机，建议定期导出备份';
+  return `<div class="bk-tip">💾<div class="bk-msg">${msg}</div>
+    <button class="bk-btn" onclick="go('settings')">去备份</button>
+    <button class="bk-x" onclick="dismissBackupTip()">知道了</button></div>`;
 }
 
 function calcToday(recs) {

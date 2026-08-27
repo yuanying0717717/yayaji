@@ -51,6 +51,12 @@ function refresh() {
   route();
 }
 
+function dismissBackupTip() {
+  Store.db.settings.lastBackupDismiss = Date.now();
+  Store.save();
+  refresh();
+}
+
 /* ============ Toast ============ */
 function toast(msg) {
   const box = document.getElementById('toasts');

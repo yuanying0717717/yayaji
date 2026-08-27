@@ -217,3 +217,9 @@ textarea.inp { resize: none; }
   .report-view { position: static; max-width: 100%; padding: 0; }
   .no-print { display: none !important; }
 }
+
+/* ---------- 首页备份提醒条 ---------- */
+.bk-tip { display: flex; align-items: center; gap: 8px; background: #FFF7E0; border: 1px solid #F0E0BC; border-radius: 14px; padding: 10px 12px; margin: 0 16px 12px; font-size: 13px; color: #8A6D3B; }
+.bk-msg { flex: 1; line-height: 1.4; }
+.bk-btn { background: #F2A93B; color: #fff; border: none; border-radius: 9px; padding: 6px 12px; font-size: 12px; white-space: nowrap; }
+.bk-x { background: transparent; border: none; color: #B89A5E; font-size: 12px; padding: 6px 4px; white-space: nowrap; }
